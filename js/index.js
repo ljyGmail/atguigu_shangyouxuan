@@ -101,6 +101,19 @@ window.onload = function () {
           smallPic.getBoundingClientRect().top -
           maskDiv.offsetHeight / 2;
 
+        // 判断
+        if (left < 0) {
+          left = 0;
+        } else if (left > smallPic.clientWidth - maskDiv.offsetWidth) {
+          left = smallPic.clientWidth - maskDiv.offsetWidth;
+        }
+
+        if (top < 0) {
+          top = 0;
+        } else if (top > smallPic.clientHeight - maskDiv.offsetHeight) {
+          top = smallPic.clientHeight - maskDiv.offsetHeight;
+        }
+
         // 设置left和top属性
         maskDiv.style.left = left + "px";
         maskDiv.style.top = top + "px";
