@@ -86,6 +86,26 @@ window.onload = function () {
       // 8. 让leftTop元素追加大图框
       leftTop.appendChild(bigPic);
 
+      // 设置鼠标移动事件
+      smallPic.onmousemove = function (event) {
+        // event.clientX: 鼠标点距离浏览器左侧X轴的值
+        // getBoundingClientRect().left: 小图框元素距离浏览器左侧可视left值
+        // offsetWidth: 为元素的占位宽度
+        var left =
+          event.clientX -
+          smallPic.getBoundingClientRect().left -
+          maskDiv.offsetWidth / 2;
+
+        var top =
+          event.clientY -
+          smallPic.getBoundingClientRect().top -
+          maskDiv.offsetHeight / 2;
+
+        // 设置left和top属性
+        maskDiv.style.left = left + "px";
+        maskDiv.style.top = top + "px";
+      };
+
       // 设置移出事件
       smallPic.onmouseleave = function () {
         // 让小图框移除蒙板元素
