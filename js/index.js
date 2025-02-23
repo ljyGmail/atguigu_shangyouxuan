@@ -139,4 +139,39 @@ window.onload = function () {
       };
     };
   }
+
+  // 动态渲染放大镜缩略图的数据
+  thumbnailData();
+  function thumbnailData() {
+    /**
+     * 思路:
+     * 1. 先获取piclist元素下的ul
+     * 2. 再获取data.js文件下的goodData->imageSrc
+     * 3. 遍历数组，根据数组的长度来创建li元素
+     * 4. 让ul遍历追加li元素
+     */
+    // 1. 获取piclist的ul
+    var ul = document.querySelector(
+      "#wrapper #content .contentMain #center #left #leftBottom #piclist ul"
+    );
+
+    // 2. 获取imageSrc数据
+    var imagessrc = goodData.imagessrc;
+
+    // 3. 遍历数组
+    for (var i = 0; i < imagessrc.length; i++) {
+      // 4. 创建li元素
+      var newLi = document.createElement("li");
+
+      // 5. 创建img元素
+      var newImg = document.createElement("img");
+      newImg.src = imagessrc[i].s;
+
+      // 6. 让li追加img元素
+      newLi.appendChild(newImg);
+
+      // 7. 让ul追加li元素
+      ul.appendChild(newLi);
+    }
+  }
 };
